@@ -41,11 +41,11 @@ public class SampleDataUtil {
     }
 
     public static ReadOnlyAddressBook getSampleAddressBook() {
-        BugList sampleAb = new BugList();
+        BugList sampleBl = new BugList();
         for (Person samplePerson : getSamplePersons()) {
-            sampleAb.addPerson(samplePerson);
+            sampleBl.addPerson(samplePerson);
         }
-        return sampleAb;
+        return sampleBl;
     }
 
     /**
