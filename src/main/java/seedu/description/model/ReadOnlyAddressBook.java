@@ -1,0 +1,17 @@
+package seedu.description.model;
+
+import javafx.collections.ObservableList;
+import seedu.description.model.bug.Bug;
+
+/**
+ * Unmodifiable view of an address book
+ */
+public interface ReadOnlyAddressBook {
+
+    /**
+     * Returns an unmodifiable view of the persons list.
+     * This list will not contain any duplicate persons.
+     */
+    ObservableList<Bug> getPersonList();
+
+}

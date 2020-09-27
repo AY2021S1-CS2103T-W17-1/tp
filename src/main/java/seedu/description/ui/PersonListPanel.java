@@ -1,0 +1,49 @@
+package seedu.description.ui;
+
+import java.util.logging.Logger;
+
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.Region;
+import seedu.description.commons.core.LogsCenter;
+import seedu.description.model.bug.Bug;
+
+/**
+ * Panel containing the list of persons.
+ */
+public class PersonListPanel extends UiPart<Region> {
+    private static final String FXML = "PersonListPanel.fxml";
+    private final Logger logger = LogsCenter.getLogger(PersonListPanel.class);
+
+    @FXML
+    private ListView<Bug> personListView;
+
+    /**
+     * Creates a {@code PersonListPanel} with the given {@code ObservableList}.
+     */
+    public PersonListPanel(ObservableList<Bug> bugList) {
+        super(FXML);
+        personListView.setItems(bugList);
+        personListView.setCellFactory(listView -> new PersonListViewCell());
+    }
+
+    /**
+     * Custom {@code ListCell} that displays the graphics of a {@code Bug} using a {@code PersonCard}.
+     */
+    class PersonListViewCell extends ListCell<Bug> {
+        @Override
+        protected void updateItem(Bug bug, boolean empty) {
+            super.updateItem(bug, empty);
+
+            if (empty || bug == null) {
+                setGraphic(null);
+                setText(null);
+            } else {
+                setGraphic(new PersonCard(bug, getIndex() + 1).getRoot());
+            }
+        }
+    }
+
+}
